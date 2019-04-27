@@ -22,7 +22,7 @@ services:
       - APC_SHM_SIZE=128M
       - OPCACHE_MEM_SIZE=128
       - CRON_PERIOD=15m
-      - TZ=Europe/Berlin
+      - TZ=Asia/Shanghai
       - ADMIN_USER=admin            # Don't set to configure through browser
       - ADMIN_PASSWORD=admin        # Don't set to configure through browser
       - DOMAIN=localhost
