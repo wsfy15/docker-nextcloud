@@ -223,3 +223,17 @@ Of course you can use your own software! nginx, Haproxy, Caddy, h2o, Traefik...
 The latter is especially a good choice when using Docker. [Give it a try!](https://traefik.io/)
 
 Whatever your choice is, you have to know that headers are already sent by the container, including HSTS, so there's no need to add them again. **It is strongly recommended (I'd like to say : MANDATORY) to use Nextcloud through an encrypted connection (HTTPS).** [Let's Encrypt](https://letsencrypt.org/) provides free SSL/TLS certificates, so you have no excuses.
+
+## personnal modification
+- 确保./config目录是空文件夹，第一次启动完成后，编辑config/config.php，往trusted_domains加入自己的域名或IP地址。
+- 配置nginx的https，使用自签证书或letsencrypt，同时往nginx中该server添加如下配置
+```
+location = /.well-known/carddav {
+  return 301 $scheme://$host/remote.php/dav;
+}
+
+location = /.well-known/caldav {
+  return 301 $scheme://$host/remote.php/dav;
+}
+```
+- 在/nextCloud目录下执行`occ db:convert-filecache-bigint`
