@@ -7,7 +7,7 @@ networks:
 services:
   nextcloud:
     restart: always
-    image: wsfy15/nextclound15
+    image: wsfy15/nextcloud15
     # build:
       # context: .
       # dockerfile: Dockerfile.15.0
